@@ -1,3 +1,54 @@
+@import url('https://fonts.googleapis.com/css2?family=Ibarra+Real+Nova&family=Oswald:wght@300&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@200&display=swap');
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+
+*{
+ -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: greyscale;
+  color: black;
+}
+
+.background{
+    background-color: #F4F5FF;
+}
+
+
+.main-block{
+    font-family: 'Montserrat', 'Times New Roman', Times, serif
+}
+
+.main-block h2{
+    margin: 10px 0 10px 0;
+    font-size: 30px;
+    font-family: 'Montserrat', 'Times New Roman', Times, serif
+}
+
+.main-block img{
+    width: 500px;
+    object-fit: contain;
+    height: 100%;
+    margin: 40px 0 40px 0;
+}
+
+.main-block p{
+    margin: 10px 0 10px 0;
+    font-size: 18px;
+    letter-spacing: 0.7px;
+    word-spacing: 0.2px;
+    line-height: 35px;
+    font-weight: 600;
+}
+
+.main-block li{
+    margin: 10px 0 10px 20px;
+    font-size: 16px;
+    letter-spacing: 0.7px;
+    text-decoration: dotted;
+}
+
+.post-page{
+    background-color: #ffffff;
+}
