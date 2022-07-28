@@ -1,7 +1,7 @@
 import React from "react";
 import { BsGithub, BsTwitter, BsInstagram } from "react-icons/bs";
 
-export const Footer = () => {
+const Footer = () => {
   return (
     <div className="">
       <div className="background flex align-center justify-center pb-5">
@@ -18,3 +18,5 @@ export const Footer = () => {
     </div>
   );
 };
+
+export default Footer;

@@ -1,11 +1,8 @@
 import Head from "next/head";
 import Link from "next/link";
-import { Footer } from "../components/footer";
-import Header from "../components/Header";
-import SVG from "../components/svg";
-import SvgFooter from "../components/svg_footer";
 import { sanityClient, urlFor } from "../sanity";
 import { Index } from "../typing";
+import { Header, SVG, SvgFooter, Footer } from "../components";
 
 interface Props {
   index: [Index];
@@ -15,16 +12,6 @@ const Home = ({ index }: Props) => {
   return (
     <div className="">
       <Head>
-        <link rel="preconnect" href="https://fonts.googleapis.com" />
-        <link
-          rel="preconnect"
-          href="https://fonts.gstatic.com"
-          crossOrigin="true"
-        />
-        <link
-          href="https://fonts.googleapis.com/css2?family=Oswald:wght@300&display=swap"
-          rel="stylesheet"
-        />
         <title>Web Newsletter</title>
         <link rel="icon" href="/favicon.ico" />
       </Head>
@@ -83,8 +70,8 @@ const Home = ({ index }: Props) => {
       <SvgFooter />
       <Footer />
     </div>
-  );
-};
+  )
+}
 
 export const getServerSideProps = async () => {
   const query = `

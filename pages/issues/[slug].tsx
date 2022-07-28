@@ -1,55 +1,60 @@
 import { GetStaticProps } from "next";
 import Link from "next/link";
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { sanityClient, urlFor } from "../../sanity";
 import { Index, Post } from "../../typing";
-import Header from "../../components/Header";
-import SVG from "../../components/svg";
+import { Header, SVG, SvgFooter, Footer } from "../../components";
+
+
 interface Props {
   index: Index;
 }
 
+
+
 const Issue = ({ index }: Props) => {
-  const [isLoading, setIsLoading] = useState(false);
 
-  const handleClick = () => {
-    setIsLoading(true);
-  };
-
+  const [constant, setConstant] = useState(0)
+  const [slug, setSlug] = useState("")
+  useEffect(() => {
+    let n = 0 
+    localStorage.setItem("issue", index.slug.current)
+    localStorage.setItem("startPoint", index.posts[0].slug.current)
+    localStorage.setItem("endPoint", index.posts[index.posts.length - 1].slug.current)
+    let url = window.location.href
+    let slug = url.split("/")[4]
+    setSlug(slug)
+  }, [constant])
+  
   return (
     <main className="">
-      {!isLoading ? (
-        <>
-          <Header />
-          <SVG />
-          <article className="max-w-3xl mx-auto p-5 text-black">
-            <h1 className="text-3xl mt-10 mb-3">{index.title}</h1>
-            {index.posts.map((post: Post) => {
-              return index.slug.current === post.issue ? (
-                <div key={post._id}>
-                  <Link
-                    onClick={handleClick}
-                    href={`/posts/${post.slug.current}`}
-                  >
-                    <span>
-                      <h2 className="text-xl text-blue-500 hover:underline cursor-pointer">
-                        {post.title}
-                      </h2>
-                    </span>
-                  </Link>
-                  <p className="text-xl font-light text-gray-500 mb-2">
-                    {post.description}
-                  </p>
-                </div>
-              ) : null;
-            })}
-          </article>
-        </>
-      ) : (
-        <div className="flex justify-center items-center">
-          <video src="https://media.giphy.com/media/8agqybiK5LW8qrG3vJ/giphy.gif" />
-        </div>
-      )}
+      <>
+        <Header />
+        <SVG />
+        <article className="max-w-3xl mx-auto p-5 text-black">
+          <h1 className="text-3xl mt-10 mb-3">{index.title}</h1>
+          {index.posts.map((post: Post) => {
+            return index.slug.current === post.issue ? (
+              <div key={post._id}>
+                <Link
+                  href={`/posts/${post.slug.current}`}
+                >
+                  <span>
+                    <h2 className="text-xl text-blue-500 hover:underline cursor-pointer">
+                      {post.title}
+                    </h2>
+                  </span>
+                </Link>
+                <p className="text-xl font-light text-gray-500 mb-2">
+                  {post.description}
+                </p>
+              </div>
+            ) : null;
+          })}
+        </article>
+        <SvgFooter />
+        <Footer />
+      </>
     </main>
   );
 };

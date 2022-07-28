@@ -1,25 +1,45 @@
 import { GetStaticProps } from "next";
-import React from "react";
+import React, { useEffect, useState } from "react";
 import { BsArrowLeft, BsArrowRight } from "react-icons/bs";
-
-import Header from "../../components/Header";
+import { Header, SVG, SvgFooter, Footer } from "../../components";
 import { sanityClient, urlFor } from "../../sanity";
+import { useRouter } from "next/router";
 import { Post } from "../../typing";
 import PortableText from "react-portable-text";
-import SVG from "../../components/svg";
+import Head from "next/head";
 
 interface Props {
   post: Post;
-  postList: [Post]
 }
 
-const Posts = ({ post, postList }: Props) => {
-
+const Posts = ({ post }: Props) => {
+  const router = useRouter();
+  const [startPoint, setStartPoint] = useState(0);
+  const [endPoint, setEndPoint] = useState(0);
+  const [current, setCurrent] = useState(0);
+  useEffect(() => {
+    
+    let url = window.location.href;
+    let slug = url.split("/")[4];
+    setCurrent(parseInt(slug));
+    let startPoint = localStorage.getItem("startPoint");
+    let endPoint = localStorage.getItem("endPoint");
+    if (startPoint && endPoint) {
+      setStartPoint(parseInt(startPoint));
+      setEndPoint(parseInt(endPoint));
+    } else {
+      setStartPoint(0);
+      setEndPoint(0);
+    }
+  }, [post._id]);
 
   return (
     <main className="post-page" suppressHydrationWarning>
+      <Head>
+        <title>{post.title}</title>
+      </Head>
       <Header />
-      <SVG/>
+      <SVG />
       <article className="max-w-3xl mx-auto p-5 text-black ">
         <b>
           <h1 className="text-3xl mt mb-10">{post.title}</h1>
@@ -46,7 +66,8 @@ const Posts = ({ post, postList }: Props) => {
           <p className="pl-3 font-extralight">Written by {post.author.name}</p>
         </div>
         <p className="font-extralight pt-3">
-          Published at - {new Date(post.publishedAt).toLocaleString()}
+          Published at -{" "}
+          {new Date(post.publishedAt).toString().substring(0, 15)}
         </p>
         <div className="mt-5">
           <PortableText
@@ -56,7 +77,7 @@ const Posts = ({ post, postList }: Props) => {
             content={post.body}
             serializers={{
               li: ({ children, ...restProps }: any) => (
-                <li className="ml-3 list-disc font-semibold" {...restProps}>
+                <li className="ml-3 list-disc font-normal" {...restProps}>
                   {children}
                 </li>
               ),
@@ -66,12 +87,12 @@ const Posts = ({ post, postList }: Props) => {
                 </h1>
               ),
               h2: ({ children, ...restProps }: any) => (
-                <h2 className="text-2xl font-bold" {...restProps}>
+                <h2 className="text-2xl font-normal" {...restProps}>
                   {children}
                 </h2>
               ),
               h3: ({ children, ...restProps }: any) => (
-                <h3 className="text-xl font-bold" {...restProps}>
+                <h3 className="text-xl font-normal" {...restProps}>
                   {children}
                 </h3>
               ),
@@ -84,14 +105,28 @@ const Posts = ({ post, postList }: Props) => {
           />
         </div>
         <div className="flex justify-between mt-10">
+          {current > startPoint &&
           <button className="bg-blue-500 hover:bg-blue-700 text-white py-2 px-4 rounded">
-            <BsArrowLeft className="align-middle" />
-          </button>
-          <button className="align-middle bg-blue-500 hover:bg-blue-700 text-white py-2 px-4 rounded">
-            <BsArrowRight className="align-middle" />
-          </button>
+            <BsArrowLeft
+              onClick={() => {
+                router.push(`/posts/${current - 1}`);
+              }}
+              className="align-middle"
+            />
+          </button>}
+          { current < endPoint && 
+            <button className="align-middle bg-blue-500 hover:bg-blue-700 text-white py-2 px-4 rounded">
+            <BsArrowRight
+              onClick={() => {
+                router.push(`/posts/${current + 1}`);
+              }}
+              className="align-middle"
+            />
+          </button>}
         </div>
       </article>
+      <SvgFooter />
+      <Footer />
     </main>
   );
 };
@@ -110,7 +145,6 @@ export const getStaticPaths = async () => {
   const posts = await sanityClient.fetch(query);
   const paths = posts.map((post: Post) => ({
     params: {
-      postList: posts,
       slug: post.slug.current,
     },
   }));
@@ -143,12 +177,9 @@ export const getStaticProps: GetStaticProps = async ({ params }) => {
       notFound: true,
     };
   }
-  const postList = params?.postList
-
   return {
     props: {
       post,
-      postList,
     },
     revalidate: 60,
   };
