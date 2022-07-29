@@ -1,23 +1,19 @@
 import React, { useState } from "react";
-import { Header, SVG, SvgFooter, Footer } from "../../components";
+import { Header, SVG, SvgFooter, Footer, Editable } from "../../components";
+
+//const Editable = dynamic(() => import("../../components/editable"))
 
 const Article = () => {
-  const [image, setImage] = useState<String[]>([]);
-
-  const onImageChange = (e: React.ChangeEvent<HTMLInputElement>) => {
-    if (e.target.files) {
-        const files = Array.from(e.target.files);
-        files.forEach((file) => {
-            const img = URL.createObjectURL(file);
-            setImage([...image, img]);
-        })
-    }
+  const [value, setValue] = useState<String>("");
+  const getValue = (value: String) => {
+    setValue(value);
   };
   return (
     <main className="">
       <Header />
       <SVG />
       <article className="max-w-3xl mx-auto p-5 text-black">
+        <Editable />{" "}
         {/*<div>
           <input multiple type="file"  onChange={onImageChange} />
           {image ?

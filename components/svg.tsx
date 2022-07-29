@@ -2,7 +2,7 @@ import React from "react";
 
 const SVG = () => {
   return (
-    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1440 320">
+    <svg className="mb-0" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1440 320">
       <path
         fill="#F4F5FF"
         fillOpacity="1"
