@@ -66,7 +66,7 @@ const Posts = ({ post }: Props) => {
           <p className="pl-3 font-extralight">Written by {post.author.name}</p>
         </div>
         <p className="font-extralight pt-3">
-          Published at -{" "}
+          Published on -{" "}
           {new Date(post.publishedAt).toString().substring(0, 15)}
         </p>
         <div className="mt-5">

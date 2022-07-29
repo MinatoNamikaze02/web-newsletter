@@ -3,8 +3,7 @@ import { useState } from "react";
 import {BsFillCaretDownFill} from 'react-icons/bs'
 function Editable() {
   const [clicked, setClicked] = useState(false)
-  const handleClick = (event) => {
-    event.preventDefault()
+  const handleClick = () => {
     setClicked(!clicked)
   } 
   return (

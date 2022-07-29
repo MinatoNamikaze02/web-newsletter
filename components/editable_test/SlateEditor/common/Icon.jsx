@@ -1,6 +1,6 @@
 import React from 'react';
 import { MdFormatBold, MdFormatItalic, MdStrikethroughS, MdFormatUnderlined, MdFormatQuote, MdFormatAlignLeft, MdFormatAlignCenter, MdFormatAlignRight, MdFormatListNumbered, MdFormatListBulleted,MdInsertLink,MdVideoLibrary,MdImage,MdAdd,MdKeyboardArrowRight, MdArrowForward} from 'react-icons/md'
-import { BsTypeH1, BsTypeH2, BsTypeH3, BsCameraVideoFill } from 'react-icons/bs'
+import {BsCodeSlash, BsTypeH1, BsTypeH2, BsTypeH3, BsCameraVideoFill } from 'react-icons/bs'
 import { FaSuperscript,FaSubscript } from 'react-icons/fa'
 import { AiFillEdit,AiOutlineTable, AiOutlineInsertRowBelow, AiOutlineInsertRowRight,AiOutlineDelete, AiFillTag, AiOutlineUpload, AiOutlineArrowsAlt, AiOutlineInsertRowAbove, AiOutlineInsertRowLeft,AiFillHtml5 } from 'react-icons/ai'
 import { SiLatex } from 'react-icons/si'
@@ -12,7 +12,7 @@ const iconList={
     headingOne:<BsTypeH1 size={20}/>,
     headingTwo:<BsTypeH2 size={20}/>,
     headingThree:<BsTypeH3 size={20}/>,
-
+    code: <BsCodeSlash size={20}/>,
     blockquote:<MdFormatQuote size={20}/>,
     superscript:<FaSuperscript size={15}/>,
     subscript:<FaSubscript size={15}/>,
