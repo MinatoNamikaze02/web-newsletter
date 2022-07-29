@@ -15,6 +15,6 @@
     "jsx": "preserve",
     "incremental": true
   },
-  "include": ["next-env.d.ts", "**/*.ts", "**/*.tsx", "components/editable/index.jsx", "components/editable_test/TestComp.jsx", "components/editable_test/SlateEditor/common/Button.jsx"],
+  "include": ["next-env.d.ts", "**/*.ts", "**/*.tsx", "components/editable/index.jsx", "components/editable_test/TestComp.jsx", "components/editable_test/SlateEditor/common/Button.jsx", "components/editable_test/index.jsx"],
   "exclude": ["node_modules"]
 }
