@@ -1,0 +1,57 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  @font-face {
+    font-family: "ObjectSans";
+    src: url("/fonts/ObjectSans-Regular.otf") format("opentype");
+    font-weight: 300;
+    font-display: swap;
+    font-style: normal;
+  }
+}
+
+.background {
+  background-color: #f4f5ff;
+}
+
+.main-block {
+  text-align: justify;
+}
+
+.main-block h2 {
+  margin: 10px 0 10px 0;
+  font-size: 30px;
+}
+
+.main-block img {
+  width: 100%;
+  object-fit: contain;
+  height: 400px;
+  margin: 40px 0 40px 0;
+}
+.main-block p {
+  margin: 10px 0 10px 0;
+  font-size: 18px;
+  /*letter-spacing: 0.5px;*/
+  word-spacing: 0.1px;
+  line-height: 35px;
+  font-weight: 400;
+}
+
+.main-block li {
+  margin: 10px 0 10px 20px;
+  font-size: 16px;
+  font-weight: 400;
+  letter-spacing: 0.7px;
+  text-decoration: dotted;
+}
+
+.post-page {
+  background-color: #ffffff;
+}
+
+.App {
+  width: 100%;
+}
