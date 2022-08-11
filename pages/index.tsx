@@ -8,9 +8,12 @@ interface Props {
   index: [Index];
 }
 
+
+
+
 const Home = ({ index }: Props) => {
   return (
-    <div className="font-ObjectSans">
+    <div className="">
       <Head>
         <title>Web Newsletter</title>
         <link rel="icon" href="/favicon.ico" />
