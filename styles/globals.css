@@ -2,14 +2,12 @@
 @tailwind components;
 @tailwind utilities;
 
-@layer base {
-  @font-face {
-    font-family: "ObjectSans";
-    src: url("/fonts/ObjectSans-Regular.otf") format("opentype");
-    font-weight: 300;
-    font-display: swap;
-    font-style: normal;
-  }
+@font-face {
+  font-family: "ObjectSans";
+  src: url("/fonts/ObjectSans.otf");
+  font-weight: 300;
+  font-display: swap;
+  font-style: normal;
 }
 
 .background {
@@ -54,4 +52,16 @@
 
 .App {
   width: 100%;
+}
+
+.button-submit {
+  background-color: #d20a11;
+  color: #ffffff;
+  padding: 5px;
+  opacity: 0.8;
+  border-radius: 5px;
+}
+
+.button-submit:hover {
+  opacity: 1;
 }

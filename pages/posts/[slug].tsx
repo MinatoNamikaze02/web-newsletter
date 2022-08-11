@@ -40,13 +40,6 @@ const Posts = ({ post }: Props) => {
       </Head>
       <Header check="Y" />
       <SVG />
-      {post.mainImage && (
-        <img
-          className="w-full mb-10 h-60 object-cover"
-          src={urlFor(post.mainImage).url()!}
-          alt=""
-        />
-      )}
       <div className="flex justify-center align-center">
         <b>
           <h1 className="text-3xl mt mb-10">{post.title}</h1>
@@ -55,6 +48,14 @@ const Posts = ({ post }: Props) => {
           {post.description}
         </h2>
       </div>
+      {post.mainImage && (
+        <img
+          className="w-full mb-10 h-60 object-cover"
+          src={urlFor(post.mainImage).url()!}
+          alt=""
+        />
+      )}
+
       <article className="max-w-3xl mx-auto p-5 text-black ">
         <div className="flex items-center">
           {post.author.image && (
