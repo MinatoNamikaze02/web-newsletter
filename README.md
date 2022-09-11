@@ -1,4 +1,4 @@
-# A web-newsletter
+# Web-newsletter
 
 ## Tech Stack
 * Next.js
