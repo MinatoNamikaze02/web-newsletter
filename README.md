@@ -1,9 +1,9 @@
-# A web-newsletter for ASCII newsletter issues
+# A web-newsletter
 
 ## Tech Stack
 * Next.js
 * Tailwind 
-* TypeScript
+* Sanity.io
 
 ## License 
 MIT
