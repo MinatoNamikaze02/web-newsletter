@@ -37,7 +37,7 @@ const Home = ({ index }: Props) => {
       </div>
        */}
       <article className="max-w-4xl mx-auto p-5 text-black ">
-        <h1><b>Greetings from ASCII, Amrita 👋</b></h1>
+        <h1><b>Greetings 👋</b></h1>
         <p></p>
         <div className="pt-10 cursor-pointer grid grid-cols-1 sm:grid-cols-1 md:grid-cols-3 lg:grid-cols-3 xl:grid-cols-3 gap-5 sm:gap-3">
           {index.map((post) => (
